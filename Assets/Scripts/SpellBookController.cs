@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.InputSystem; // <-- new Input System
+using UnityEngine.InputSystem;
+using System.IO;
 
 public class SpellBookController : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class SpellBookController : MonoBehaviour
         {
             Debug.LogError("TMP_InputField not found in children!");
         }
+
+        LoadSpellFromFile();
     }
 
     void Update()
@@ -38,4 +41,39 @@ public class SpellBookController : MonoBehaviour
         string spellText = inputField.text;
         UnityEngine.SceneManagement.SceneManager.LoadScene("AkiraTestScene");
     }
+
+    public void SaveSpell()
+    {
+        if (inputField == null)
+        {
+            Debug.LogError("Input field is null, cannot save spell.");
+            return;
+        }
+
+        string spellText = inputField.text;
+
+        string path = Path.Combine(
+            Application.persistentDataPath,
+            "SavedSpell.txt"
+        );
+
+        File.WriteAllText(path, spellText);
+
+        Debug.Log("Spell saved to" + path);
+    }
+
+    void LoadSpellFromFile()
+    {
+        string path = Path.Combine(
+            Application.persistentDataPath,
+            "SavedSpell.txt"
+        );
+
+        if (File.Exists(path))
+        {
+            inputField.text = File.ReadAllText(path);
+            inputField.ActivateInputField();
+        }
+    }
+
 }
