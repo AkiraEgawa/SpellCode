@@ -14,3 +14,5 @@ Unity version: 6.3 LTS
 - Part for Akira (Probably popped up in mind and want to keep written before forget)
   - SpellRuntime will not create the fireballs and stuff, I want to broadcast a message to the player object and let the player object execute the spell with the given parameters.  This way feels cleaner
   - Tmr (12-23), implement a way to parse spells and test it by printing stack to console or smth, just make sure your math functions work. Also, implement a way to store multiple spells, thanks
+- For game release
+  - There is a section on right side of Github, that says make new release, please add the build to that, and not to the main folder. I refuse to set up Github LFS for now, I'm too tired, and that way is cleaner
