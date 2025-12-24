@@ -1,0 +1,17 @@
+unus 1
+duo 2
+tres 3
+quattuor 4
+quinque 5
+sex 6
+septem 7
+octo 8
+novem 9
+addere Add
+subtrahere Subtract
+multiplicare Multiply
+dividere Divide
+potentia Power
+sinus Sin
+cosinus Cos
+tangens Tan

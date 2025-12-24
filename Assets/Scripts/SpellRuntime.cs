@@ -5,7 +5,7 @@ using System.Collections.Generic;
 // Object that controls the spell during runtime, essentialy the structure of it
 // Stack Convention:
 // First Pop = first argument (top of stack)
-public class SpellRuntime
+public class SpellRuntime : MonoBehaviour
 {
     // Privates here
     private Stack<object> stack = new Stack<object>();
@@ -16,14 +16,27 @@ public class SpellRuntime
         return (T)stack.Pop();
     }
     
-    private void Push(object value)
+    private void Push(float value)
     {
         stack.Push(value);
     }
 
+    // Miscelannious publics needed
+
+    public void ClearStack()
+    {
+        stack.Clear();
+    }
+
+    public string StackToString()
+    {
+        // Print bottom → top
+        return string.Join(", ", stack);
+    }
+
     // Numbers Under, they add numbers, 1 through 9
     // figure out the amount to add when reading it in by parsing.
-    public void addNum(object value)
+    public void PushNumber(float value)
     {
         stack.Push(value);
     }
