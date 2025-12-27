@@ -24,3 +24,4 @@ cosinus Cos
 tangens Tan
 minimum Min
 maximum Max
+entropia Entropy

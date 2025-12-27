@@ -49,6 +49,8 @@ public class GameController : MonoBehaviour
         commandTable["Min"] = spellRuntime.Min;
         commandTable["Max"] = spellRuntime.Max;
 
+        commandTable["Entropy"] = spellRuntime.Entropy;
+
         // Numbers 1–9 (as “commands” that push the number)
         commandTable["1"] = () => spellRuntime.PushNumber(1);
         commandTable["2"] = () => spellRuntime.PushNumber(2);

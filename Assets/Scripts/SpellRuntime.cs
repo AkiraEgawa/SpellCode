@@ -159,4 +159,10 @@ public class SpellRuntime : MonoBehaviour
         Push(Mathf.Max(a, b));
     }
 
+    // Entropy
+    public void Entropy()
+    {
+        Push(UnityEngine.Random.value);
+    }
+
 }
