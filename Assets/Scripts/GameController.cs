@@ -61,6 +61,16 @@ public class GameController : MonoBehaviour
         commandTable["7"] = () => spellRuntime.PushNumber(7);
         commandTable["8"] = () => spellRuntime.PushNumber(8);
         commandTable["9"] = () => spellRuntime.PushNumber(9);
+
+        // Stack Manipulation
+        commandTable["CopyVal"] = spellRuntime.CopyVal;
+        commandTable["Package"] = spellRuntime.Package;
+        commandTable["Unpackage"] = spellRuntime.Unpackage;
+        commandTable["RotTouch2"] = spellRuntime.RotTouch2;
+        commandTable["RotTouch3"] = spellRuntime.RotTouch3;
+        commandTable["RotTouch4"] = spellRuntime.RotTouch4;
+        commandTable["Move"] = spellRuntime.Move;
+
     }
 
     void Awake()
