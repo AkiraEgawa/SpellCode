@@ -33,10 +33,21 @@ public class GameController : MonoBehaviour
         commandTable["Subtract"] = spellRuntime.Subtract;
         commandTable["Multiply"] = spellRuntime.Multiply;
         commandTable["Divide"] = spellRuntime.Divide;
+        commandTable["Negate"] = spellRuntime.Negate;
+        commandTable["Abs"] = spellRuntime.Abs;
+        commandTable["Sqrt"] = spellRuntime.Sqrt;
+        commandTable["Ceil"] = spellRuntime.Ceil;
+        commandTable["Floor"] = spellRuntime.Floor;
         commandTable["Power"] = spellRuntime.Power;
+        commandTable["Mod"] = spellRuntime.Mod;
+
+        // Trig
         commandTable["Sin"] = spellRuntime.Sin;
         commandTable["Cos"] = spellRuntime.Cos;
         commandTable["Tan"] = spellRuntime.Tan;
+
+        commandTable["Min"] = spellRuntime.Min;
+        commandTable["Max"] = spellRuntime.Max;
 
         // Numbers 1–9 (as “commands” that push the number)
         commandTable["1"] = () => spellRuntime.PushNumber(1);

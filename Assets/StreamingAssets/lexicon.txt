@@ -1,3 +1,4 @@
+nulla 0
 unus 1
 duo 2
 tres 3
@@ -11,7 +12,15 @@ addere Add
 subtrahere Subtract
 multiplicare Multiply
 dividere Divide
+negare Negate
+absolutus Abs
+radix Sqrt
+tectum Ceil
+solum Floor
 potentia Power
+modulus Mod
 sinus Sin
 cosinus Cos
 tangens Tan
+minimum Min
+maximum Max
