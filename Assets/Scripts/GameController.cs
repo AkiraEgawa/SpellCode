@@ -52,6 +52,7 @@ public class GameController : MonoBehaviour
         commandTable["Entropy"] = spellRuntime.Entropy;
 
         // Numbers 1–9 (as “commands” that push the number)
+        commandTable["0"] = () => spellRuntime.PushNumber(0);
         commandTable["1"] = () => spellRuntime.PushNumber(1);
         commandTable["2"] = () => spellRuntime.PushNumber(2);
         commandTable["3"] = () => spellRuntime.PushNumber(3);
@@ -70,6 +71,9 @@ public class GameController : MonoBehaviour
         commandTable["RotTouch3"] = spellRuntime.RotTouch3;
         commandTable["RotTouch4"] = spellRuntime.RotTouch4;
         commandTable["Move"] = spellRuntime.Move;
+
+        // Actual Spells
+        commandTable["Firebolt"] = () => spellRuntime.Firebolt();
 
     }
 
@@ -97,9 +101,10 @@ public class GameController : MonoBehaviour
         BuildCommandTable();
     }
 
-    public void CastSpell(string spellText)
+    public void CastSpell(string spellText, SpellContext context)
     {
         spellRuntime.ClearStack();
+        spellRuntime.SetContext(context);
 
         string[] tokens = spellText.Split(
             new[] { ' ', '\n', '\t' },

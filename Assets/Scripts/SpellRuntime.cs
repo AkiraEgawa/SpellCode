@@ -2,15 +2,31 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
+
 
 // Object that controls the spell during runtime, essentialy the structure of it
 // Stack Convention:
 // First Pop = first argument (top of stack)
 public class SpellRuntime : MonoBehaviour
 {
+    public Transform casterTransform;
+    public Vector2 facingDirection;
+    public float mana; // Not in use yet
+    public FireboltProjectile fireboltPrefab;
+
+    private SpellContext context;
+
+
     // Privates here
     private Stack<object> stack = new Stack<object>();
+
+    public void SetContext(SpellContext ctx)
+    {
+        context = ctx;
+    }
+
+    public SpellContext Context => context;
+
     private T Pop<T>()
     {
         if (stack.Count == 0){throw new System.InvalidOperationException("Stack Underflow");}
@@ -260,6 +276,38 @@ public class SpellRuntime : MonoBehaviour
         stack.Clear();
         for (int i = temp.Count - 1; i >= 0; i--)
             stack.Push(temp[i]);
+    }
+
+
+    ///
+    /// THE ACTUAL SPELLS
+    /// 
+    
+    // FIrebolt (no, not fireball, the bad version of it)
+    public void Firebolt()
+    {
+        float theta = Pop<float>();
+        float power = Pop<float>();
+
+        Transform firePoint = context.firePoint;
+        Vector2 facing = context.facing;
+
+        float baseAngle = Mathf.Atan2(facing.y, facing.x) * Mathf.Rad2Deg;
+        float angle = baseAngle + theta;
+
+        Vector2 dir = new Vector2(
+            Mathf.Cos(angle * Mathf.Deg2Rad),
+            Mathf.Sin(angle * Mathf.Deg2Rad)
+        );
+
+        float zRotation = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+        FireboltProjectile projectile = Instantiate(
+            fireboltPrefab, 
+            firePoint.position, 
+            Quaternion.Euler(0f,0f,zRotation)
+        );
+        projectile.Initialize(dir,power);
     }
 
 

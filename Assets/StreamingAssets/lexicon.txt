@@ -33,3 +33,4 @@ tactusRot2 RotTouch2
 tactusRot3 RotTouch3
 tactusRot4 RotTouch4
 movere Move
+ignisbolt Firebolt
